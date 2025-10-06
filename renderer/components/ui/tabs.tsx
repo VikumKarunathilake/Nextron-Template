@@ -5,6 +5,14 @@ import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * A set of layered sections of content, known as tab panels, that are displayed one at a time.
+ *
+ * @param {object} props - The properties for the Tabs component.
+ * @param {string} [props.className] - Optional CSS class names to apply to the component.
+ * @param {React.ReactNode} props.children - The content of the tabs.
+ * @returns {JSX.Element} The rendered Tabs component.
+ */
 function Tabs({
   className,
   ...props
@@ -18,6 +26,14 @@ function Tabs({
   )
 }
 
+/**
+ * A list of triggers that activate the corresponding tab panels.
+ *
+ * @param {object} props - The properties for the TabsList component.
+ * @param {string} [props.className] - Optional CSS class names to apply to the component.
+ * @param {React.ReactNode} props.children - The content of the tabs list.
+ * @returns {JSX.Element} The rendered TabsList component.
+ */
 function TabsList({
   className,
   ...props
@@ -34,6 +50,14 @@ function TabsList({
   )
 }
 
+/**
+ * The trigger that activates a tab panel.
+ *
+ * @param {object} props - The properties for the TabsTrigger component.
+ * @param {string} [props.className] - Optional CSS class names to apply to the component.
+ * @param {React.ReactNode} props.children - The content of the tabs trigger.
+ * @returns {JSX.Element} The rendered TabsTrigger component.
+ */
 function TabsTrigger({
   className,
   ...props
@@ -50,6 +74,14 @@ function TabsTrigger({
   )
 }
 
+/**
+ * The content of a tab panel.
+ *
+ * @param {object} props - The properties for the TabsContent component.
+ * @param {string} [props.className] - Optional CSS class names to apply to the component.
+ * @param {React.ReactNode} props.children - The content of the tabs content.
+ * @returns {JSX.Element} The rendered TabsContent component.
+ */
 function TabsContent({
   className,
   ...props
