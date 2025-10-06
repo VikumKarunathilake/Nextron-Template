@@ -6,6 +6,14 @@ import {
 } from 'electron'
 import Store from 'electron-store'
 
+/**
+ * Creates a new Electron window with persistent state.
+ * The window's position and size are saved and restored between sessions.
+ *
+ * @param {string} windowName - The name of the window, used to store its state.
+ * @param {BrowserWindowConstructorOptions} options - The options for creating the BrowserWindow.
+ * @returns {BrowserWindow} The created BrowserWindow instance.
+ */
 export const createWindow = (
   windowName: string,
   options: BrowserWindowConstructorOptions
@@ -19,8 +27,18 @@ export const createWindow = (
   }
   let state = {}
 
+  /**
+   * Restores the window's state from the store.
+   *
+   * @returns {Rectangle} The restored window state.
+   */
   const restore = () => store.get(key, defaultSize)
 
+  /**
+   * Gets the current position and size of the window.
+   *
+   * @returns {Rectangle} The current position and size of the window.
+   */
   const getCurrentPosition = () => {
     const position = win.getPosition()
     const size = win.getSize()
@@ -32,6 +50,13 @@ export const createWindow = (
     }
   }
 
+  /**
+   * Checks if the window is within the bounds of a display.
+   *
+   * @param {Rectangle} windowState - The state of the window.
+   * @param {Rectangle} bounds - The bounds of the display.
+   * @returns {boolean} Whether the window is within the bounds.
+   */
   const windowWithinBounds = (windowState, bounds) => {
     return (
       windowState.x >= bounds.x &&
@@ -41,6 +66,11 @@ export const createWindow = (
     )
   }
 
+  /**
+   * Resets the window to its default position and size.
+   *
+   * @returns {Rectangle} The default window state.
+   */
   const resetToDefaults = () => {
     const bounds = screen.getPrimaryDisplay().bounds
     return Object.assign({}, defaultSize, {
@@ -49,6 +79,12 @@ export const createWindow = (
     })
   }
 
+  /**
+   * Ensures that the window is visible on some display.
+   *
+   * @param {Rectangle} windowState - The state of the window.
+   * @returns {Rectangle} The corrected window state.
+   */
   const ensureVisibleOnSomeDisplay = (windowState) => {
     const visible = screen.getAllDisplays().some((display) => {
       return windowWithinBounds(windowState, display.bounds)
@@ -61,6 +97,9 @@ export const createWindow = (
     return windowState
   }
 
+  /**
+   * Saves the window's state to the store.
+   */
   const saveState = () => {
     if (!win.isMinimized() && !win.isMaximized()) {
       Object.assign(state, getCurrentPosition())

@@ -6,8 +6,8 @@
   "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
   "main": "app/background.js",
   "scripts": {
-    "dev": "nextron",
-    "build": "nextron build",
+    "dev": "node init && nextron",
+    "build": "node init && nextron build",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
