@@ -5,6 +5,7 @@ node_modules
 *.log
 
 # next.js
+renderer\app\shadcn
 .next
 next-env.d.ts
 
