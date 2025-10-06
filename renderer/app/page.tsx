@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+/**
+ * The home page of the application.
+ *
+ * @returns {JSX.Element} The rendered home page.
+ */
 export default function HomePage() {
     return (
         <React.Fragment>
